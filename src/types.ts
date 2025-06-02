@@ -1,6 +1,7 @@
 export type Action =
     | {type: 'ADD';  payload: string}
     | {type: 'DELETE';  payload: number}
+    | {type: 'EDIT'; payload: {id: number; newText: string}}
 
 export type TodoProps = {
     id: number
