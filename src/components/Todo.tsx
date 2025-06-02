@@ -9,6 +9,7 @@ const toDoReducer = ( state: TodoProps[], action: Action): TodoProps[] => {
             const newTodo: TodoProps = {
                 id: Date.now(),
                 text: action.payload,
+                completed: false
             }
             return [...state,  newTodo]
         case 'DELETE':
@@ -17,6 +18,12 @@ const toDoReducer = ( state: TodoProps[], action: Action): TodoProps[] => {
             return state.map( todo =>
                 todo.id === action.payload.id
                 ? {...todo, text: action.payload.newText}
+                : todo
+            )
+        case 'COMPLETE':
+            return state.map( todo =>
+                todo.id === action.payload
+                ? {...todo, completed: !todo.completed}
                 : todo
             )
         default:
