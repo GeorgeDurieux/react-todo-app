@@ -20,7 +20,7 @@ const TodoForm = ({dispatch}: TodoFormProps) => {
     return (
         <>
             <form
-                className="flex gap-4"
+                className="flex gap-4 mb-4"
                 onSubmit={handleSubmit}
             >
                 <input
