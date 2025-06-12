@@ -1,7 +1,7 @@
-import {useState} from "react";
+import { useState } from "react";
 import type { TodoFormProps } from "../types.ts";
 
-const TodoForm = ({dispatch}: TodoFormProps) => {
+const TodoForm = ({dispatch, inputRef}: TodoFormProps) => {
 
     const [text, setText] = useState('');
 
@@ -14,6 +14,7 @@ const TodoForm = ({dispatch}: TodoFormProps) => {
         if (text.trim() !== '') {
             dispatch({type: 'ADD', payload: text});
             setText('');
+            inputRef.current?.focus()
         }
     }
 
@@ -24,6 +25,7 @@ const TodoForm = ({dispatch}: TodoFormProps) => {
                 onSubmit={handleSubmit}
             >
                 <input
+                    ref={inputRef}
                     type="text"
                     value={text}
                     onChange={handleChange}
